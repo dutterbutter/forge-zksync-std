@@ -25,10 +25,11 @@ interface VmExt {
     /// Use a paymaster for the next ZK-VM call.
     function zkUsePaymaster(address paymaster, bytes calldata input) external;
 
-    /// commetn
-    function getZKSyncBytecodeHash(
-        bytes memory data
-    ) external pure returns (bytes32);
+    // /// Computes and returns the 32-byte hash of the provided bytecode, as typically generated
+    // /// by `type(Contract).creationCode`.
+    // function zkGetBytecodeHash(
+    //     bytes memory data
+    // ) external pure returns (bytes32);
 }
 
 abstract contract TestExt is StdUtils {
