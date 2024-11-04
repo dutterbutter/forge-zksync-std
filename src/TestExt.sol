@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.13;
 
+import {StdUtils} from "./StdUtils.sol";
+
 interface VmExt {
     /// Registers bytecodes for ZK-VM for transact/call and create instructions.
     function zkRegisterContract(
@@ -22,9 +24,14 @@ interface VmExt {
 
     /// Use a paymaster for the next ZK-VM call.
     function zkUsePaymaster(address paymaster, bytes calldata input) external;
+
+    /// commetn
+    function getZKSyncBytecodeHash(
+        bytes memory data
+    ) external pure returns (bytes32);
 }
 
-abstract contract TestExt {
+abstract contract TestExt is StdUtils {
     // Cheat code address, 0x7109709ECfa91a80626fF3989D68f67F5b1DD12D.
     address internal constant VM_EXT_ADDRESS =
         address(uint160(uint256(keccak256("hevm cheat code"))));
